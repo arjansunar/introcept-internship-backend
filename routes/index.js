@@ -12,4 +12,7 @@ router.get("/form", (req, res, next) => {
     title: "form",
   });
 });
+router.post("/form", (req, res, next) => {
+  res.send(req.body);
+});
 module.exports = router;

@@ -1,3 +1,97 @@
-<form action="post">
+<div class="columns">
+  <form action="/form" method="post" class="container is-fluid column is-half">
+    <h1 class="title">Form </h1>
 
-</form>
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" name="name" type="text" placeholder="Text input" />
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          {{! class="input is-danger" }}
+          class="input"
+          type="email"
+          name="email"
+          placeholder="Email input"
+          value=""
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      </div>
+      {{! <p class="help is-danger">This email is invalid</p> }}
+    </div>
+    <div class="field">
+      <label class="label">Phone number</label>
+      <div class="control has-icons-left has-icons-right">
+        <input
+          {{! class="input is-danger" }}
+          class="input"
+          type="number"
+          name="phoneNumber"
+          placeholder="Phone number"
+          value=""
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-envelope"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+      </div>
+      {{! <p class="help is-danger">This email is invalid</p> }}
+    </div>
+    <div class="field">
+      <label for="" class="label">Gender</label>
+      <div class="control">
+        <label class="radio" for="male">
+          <input id="male" type="radio" name="gender" value="male" />
+          Male
+        </label>
+        <label class="radio" for="female">
+          <input id="female" type="radio" name="gender" value="male" />
+          Female
+        </label>
+        <label class="radio" for="others">
+          <input id="others" type="radio" name="gender" value="male" />
+          Others
+        </label>
+      </div>
+    </div>
+
+    <div class="field mt-4">
+      <label class="label">Hobbies
+        <div class="control">
+          <label class="checkbox mr-2">
+            <input type="checkbox" name="hobbies" value="reading" />
+            Reading
+          </label>
+          <label class="checkbox mr-2">
+            <input type="checkbox" name="hobbies" value="travelling" />
+            Travelling
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" name="hobbies" value="music" />
+            Music
+          </label>
+        </div>
+      </label>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
