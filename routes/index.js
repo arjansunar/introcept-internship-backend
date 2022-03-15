@@ -50,9 +50,9 @@ const rules = [
     .custom((value) => !!genderEnum[value])
     .withMessage("Gender must be female, male or others")
     .escape(),
-  check("hobbies")
-    .exists({ checkNull: true })
-    .withMessage("Hobbies are required"),
+  // check("hobbies")
+  //   .exists({ checkNull: true })
+  //   .withMessage("Hobbies are required"),
   check("hobbies.*")
     .isString()
     .withMessage("Hobbies must be of string datatype"),
@@ -65,9 +65,20 @@ router.post("/form", [...rules], (req, res, next) => {
   const hasError = !error.isEmpty();
 
   if (hasError) {
-    res.json({ error: error.array() });
-    return;
+    /* custom err object with input names as key */
+    const err = {};
+
+    for (let el of error.errors) {
+      err[el.param] = { ...el };
+    }
+
+    res.render("form", {
+      title: "form",
+      error: err,
+    });
+    // res.send(err);
+  } else {
+    res.render("index", { success: true });
   }
-  res.send(req.body);
 });
 module.exports = router;

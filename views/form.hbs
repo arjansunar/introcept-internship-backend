@@ -1,24 +1,55 @@
 <div class="columns">
   <form action="/form" method="post" class="container is-fluid column is-half">
     <h1 class="title">Form </h1>
-
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
-        <input class="input" name="name" type="text" placeholder="Text input" />
+        {{#if error.name}}
+          <input
+            required
+            class="input is-danger"
+            name="name"
+            type="text"
+            placeholder="Text input"
+            value={{error.name.value}}
+          />
+        {{else}}
+          <input
+            required
+            class="input"
+            name="name"
+            type="text"
+            placeholder="Text input"
+          />
+        {{/if}}
       </div>
+      {{#if error.name}}
+        <p class="help is-danger">{{error.name.msg}}</p>
+      {{/if}}
     </div>
     <div class="field">
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
-        <input
-          {{! class="input is-danger" }}
-          class="input"
-          type="email"
-          name="email"
-          placeholder="Email input"
-          value=""
-        />
+        {{#if error.email}}
+          <input
+            required
+            class="input is-danger"
+            type="email"
+            name="email"
+            placeholder="Email input"
+            value={{error.email.value}}
+          />
+        {{else}}
+          <input
+            required
+            class="input"
+            type="email"
+            name="email"
+            placeholder="Email input"
+            value=""
+          />
+        {{/if}}
+
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -26,19 +57,32 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      {{! <p class="help is-danger">This email is invalid</p> }}
+      {{#if error.email}}
+        <p class="help is-danger">{{error.email.msg}}</p>
+      {{/if}}
     </div>
     <div class="field">
       <label class="label">Phone number</label>
       <div class="control has-icons-left has-icons-right">
-        <input
-          {{! class="input is-danger" }}
-          class="input"
-          type="number"
-          name="phoneNumber"
-          placeholder="Phone number"
-          value=""
-        />
+        {{#if error.phoneNumber}}
+          <input
+            required
+            class="input is-danger"
+            type="number"
+            name="phoneNumber"
+            placeholder="Phone number"
+            value={{error.phoneNumber.value}}
+          />
+        {{else}}
+          <input
+            required
+            class="input"
+            type="number"
+            name="phoneNumber"
+            placeholder="Phone number"
+            value=""
+          />
+        {{/if}}
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -46,27 +90,25 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      {{! <p class="help is-danger">This email is invalid</p> }}
+      {{#if error.phoneNumber}}
+        <p class="help is-danger">{{error.phoneNumber.msg}}</p>
+      {{/if}}
     </div>
     <div class="field">
       <label for="" class="label">Gender</label>
       <div class="control">
         <label class="radio" for="male">
-          <input id="male" type="radio" name="gender" value="male" />
+          <input required id="male" type="radio" name="gender" value="male" />
           Male
         </label>
         <label class="radio" for="female">
-          <input id="female" type="radio" name="gender" value="male" />
+          <input required id="female" type="radio" name="gender" value="male" />
           Female
         </label>
         <label class="radio" for="others">
-          <input id="others" type="radio" name="gender" value="male" />
+          <input required id="others" type="radio" name="gender" value="male" />
           Others
         </label>
-        {{! <label class="radio" for="test">
-          <input id="test" type="radio" name="gender" value="test" />
-          test
-        </label> }}
       </div>
     </div>
 
